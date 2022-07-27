@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Wordle.Controller">
    <children>
       <GridPane fx:id="grid1" gridLinesVisible="true" layoutX="50.0" layoutY="36.0" prefHeight="54.0" prefWidth="500.0">
         <columnConstraints>
@@ -49,7 +50,7 @@
             </TextField>
          </children>
       </GridPane>
-      <GridPane fx:id="grid11" gridLinesVisible="true" layoutX="50.0" layoutY="138.0" prefHeight="54.0" prefWidth="500.0">
+      <GridPane fx:id="grid2" gridLinesVisible="true" layoutX="50.0" layoutY="138.0" prefHeight="54.0" prefWidth="500.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -88,7 +89,7 @@
             </TextField>
          </children>
       </GridPane>
-      <GridPane fx:id="grid12" gridLinesVisible="true" layoutX="50.0" layoutY="244.0" prefHeight="54.0" prefWidth="500.0">
+      <GridPane fx:id="grid3" gridLinesVisible="true" layoutX="50.0" layoutY="252.0" prefHeight="54.0" prefWidth="500.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -127,7 +128,7 @@
             </TextField>
          </children>
       </GridPane>
-      <GridPane fx:id="grid13" gridLinesVisible="true" layoutX="50.0" layoutY="360.0" prefHeight="54.0" prefWidth="500.0">
+      <GridPane fx:id="grid4" gridLinesVisible="true" layoutX="50.0" layoutY="360.0" prefHeight="54.0" prefWidth="500.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -166,7 +167,7 @@
             </TextField>
          </children>
       </GridPane>
-      <GridPane fx:id="grid14" gridLinesVisible="true" layoutX="50.0" layoutY="475.0" prefHeight="54.0" prefWidth="500.0">
+      <GridPane fx:id="grid5" gridLinesVisible="true" layoutX="50.0" layoutY="461.0" prefHeight="54.0" prefWidth="500.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -205,7 +206,7 @@
             </TextField>
          </children>
       </GridPane>
-      <GridPane fx:id="grid15" gridLinesVisible="true" layoutX="50.0" layoutY="584.0" prefHeight="54.0" prefWidth="500.0">
+      <GridPane fx:id="grid6" gridLinesVisible="true" layoutX="50.0" layoutY="567.0" prefHeight="54.0" prefWidth="500.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -244,5 +245,10 @@
             </TextField>
          </children>
       </GridPane>
+      <Button fx:id="enterButton" layoutX="140.0" layoutY="629.0" mnemonicParsing="false" onAction="#onEnterClick" prefHeight="0.0" prefWidth="320.0" text="Enter">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
