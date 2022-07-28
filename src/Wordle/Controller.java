@@ -7,6 +7,7 @@ import javax.swing.plaf.multi.MultiMenuBarUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -59,7 +60,7 @@ public class Controller {
     GridPane[] grid;
     int idx = 0;
     String inputWord = "";
-    Object WordGenerator;
+    WordGenerator wordGenerator;
 
     public void initialize() {
         String javaVersion = System.getProperty("java.version");
@@ -74,39 +75,49 @@ public class Controller {
     }
 
     public Controller() {
+
+        wordGenerator = new WordGenerator();
+        secretWord = wordGenerator.getRandomWord();
+        System.out.println(secretWord);
+
         multiLetters = new Alert(AlertType.ERROR);
         multiLetters.setHeaderText("Invalid letter amount.");
         multiLetters.setContentText("There should be one letter in each box.");
+
         number = new Alert(AlertType.ERROR);
         number.setHeaderText("Invalid input");
         number.setContentText("There should only be a letter in the box. No numbers or characters.");
+
         youWon = new Alert(AlertType.CONFIRMATION);
         youWon.setHeaderText("YOU WON");
         youWon.setContentText("You have guessed the word.");
+         
         youLose = new Alert(AlertType.CONFIRMATION);
         youLose.setHeaderText("YOU LOST");
         youLose.setContentText("You have lost. The word was " + secretWord);
+
         noWord = new Alert(AlertType.ERROR);
         noWord.setHeaderText("Not and a real word");
         noWord.setContentText("This is not a word in the english dictionary");
+
         backFillGreen = new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY));
         backFillYellow = new Background(new BackgroundFill(Color.YELLOW, CornerRadii.EMPTY, Insets.EMPTY));
         backFillGrey = new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY));
         resetBackground = new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY));
-        //Making gridpane array = to something
-        grid = new GridPane[6];
-        WordGenerator = new Object();
-        
-        
+
+        grid = new GridPane[6]; 
     }
+
     @FXML
     void onEnterClick(ActionEvent event) {
+        inputWord = "";
+
             for(int i = 0; i < 5; i++) {
+
                 TextField currentField = ((TextField)grid[idx].getChildren().get(i));
                 String currentLetter = currentField.getText();
                 inputWord += currentLetter;
 
-                
                 if(currentLetter.length() != 1) {
                     multiLetters.showAndWait();
                     return;
@@ -122,9 +133,11 @@ public class Controller {
                         System.out.println(currentLetter + " is in the word but placed in the wrong spot");
                         currentField.setBackground(backFillYellow);
                     }
+
                     else {
                         System.out.println(currentLetter + " is not in the word");
                     }
+
                 }
                 
                 else {
@@ -132,25 +145,45 @@ public class Controller {
                     return;
                 }
             }
-            if(secretWord.toLowerCase().equals(inputWord.toLowerCase())) {
+
+            idx++;
+
+            if(secretWord.equals(inputWord.toLowerCase())) {
                 youWon.showAndWait();
                 resetBoard();
             }
-            idx++;
-            if(idx == 6) {
+
+            else if(idx == 6) {
                 youLose.showAndWait();
                 resetBoard();
             }
-            
-        
+
+            else {
+                grid[idx].setDisable(false);
+                grid[idx-1].setDisable(true);
+            }
+
     } 
+
     public void resetBoard() {
-        
+        secretWord = wordGenerator.getRandomWord();
+        System.out.println(secretWord);
         for (GridPane gridPane : grid) {
             for (Node currentNode: gridPane.getChildren()) {
-                ((TextField)currentNode).setText("");
-                ((TextField)currentNode).setBackground(resetBackground);
+                try {
+                    ((TextField) currentNode).setBackground(resetBackground);
+                    ((TextField)currentNode).setText("");
+                } catch (Exception e) {
+
+                }
+                
             }
         }
+        grid[idx].setDisable(true);
+        idx = 0;
+        grid[idx].setDisable(false);
+    }
+    public void letterCheck() {
+        
     }
 }
