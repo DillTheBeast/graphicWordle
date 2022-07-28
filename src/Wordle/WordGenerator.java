@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class WordGenerator {
     
     Scanner reader;
-    
+                                            //CHANGE THIS
     private final String WORDS_BASE_PATH = "C:/Users/User/Documents/GitHub/graphicWordle/src/Wordle/" ;
     private final String ALL_WORDS_PATH =  "all_words.txt";// CHANGE FILE SIZE VARIABLE AS WELL WHEN CHANGING ME
     private final  String SOME_WORDS_PATH = "some_words.txt"; // CHANGE FILE SIZE VARIABLE AS WELL WHEN CHANGING ME
