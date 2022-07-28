@@ -61,6 +61,8 @@ public class Controller {
     int idx = 0;
     String inputWord = "";
     WordGenerator wordGenerator;
+    String currentLetter;
+    TextField currentField;
 
     public void initialize() {
         String javaVersion = System.getProperty("java.version");
@@ -113,58 +115,32 @@ public class Controller {
         inputWord = "";
 
             for(int i = 0; i < 5; i++) {
-
-                TextField currentField = ((TextField)grid[idx].getChildren().get(i));
-                String currentLetter = currentField.getText();
+                currentField = ((TextField)grid[idx].getChildren().get(i));
+                currentLetter = currentField.getText();
                 inputWord += currentLetter;
-                
-
-                if(currentLetter.length() != 1) {
-                    multiLetters.showAndWait();
-                    return;
-                }
-                
-                if((currentLetter.charAt(0) >= 65 && currentLetter.charAt(0) <= 90) || (currentLetter.charAt(0) >= 97 && currentLetter.charAt(0) <= 122)) {
-                    if(currentLetter.toLowerCase().charAt(0) == secretWord.toLowerCase().charAt(i)) {
-                        System.out.println(currentLetter + " is in the right spot");
-                        currentField.setBackground(backFillGreen);
-                    }
-
-                    else if(secretWord.contains(currentLetter)) {
-                        System.out.println(currentLetter + " is in the word but placed in the wrong spot");
-                        currentField.setBackground(backFillYellow);
-                    }
-
-                    else {
-                        System.out.println(currentLetter + " is not in the word");
-                    }
-
-                }
-                
-                else {
-                    number.showAndWait();
-                    return;
-                }
             }
             if(inputWord.equals(wordGenerator)) {
-
+                rightLetterCheck(currentLetter, currentField);
+                idx++;
+                if(secretWord.equals(inputWord.toLowerCase())) {
+                    youWon.showAndWait();
+                    resetBoard();
+                }
+    
+                else if(idx == 6) {
+                    youLose.showAndWait();
+                    resetBoard();
+                }
+    
+                else {
+                    grid[idx].setDisable(false);
+                    grid[idx-1].setDisable(true);
+                }
             }
-
-            idx++;
-
-            if(secretWord.equals(inputWord.toLowerCase())) {
-                youWon.showAndWait();
-                resetBoard();
-            }
-
-            else if(idx == 6) {
-                youLose.showAndWait();
-                resetBoard();
-            }
-
             else {
-                grid[idx].setDisable(false);
-                grid[idx-1].setDisable(true);
+                noWord.showAndWait();
+                clearRow();
+
             }
 
     } 
@@ -187,7 +163,41 @@ public class Controller {
         idx = 0;
         grid[idx].setDisable(false);
     }
-    public void letterCheck() {
+    public void rightLetterCheck(String currentLetter, TextField currentField) {
+        int at = 0;
+        if(currentLetter.length() != 1) {
+            multiLetters.showAndWait();
+            return;
+        }
         
+        if((currentLetter.charAt(0) >= 65 && currentLetter.charAt(0) <= 90) || (currentLetter.charAt(0) >= 97 && currentLetter.charAt(0) <= 122)) {
+            if(currentLetter.toLowerCase().charAt(0) == secretWord.toLowerCase().charAt(at)) {
+                System.out.println(currentLetter + " is in the right spot");
+                currentField.setBackground(backFillGreen);
+            }
+
+            else if(secretWord.contains(currentLetter)) {
+                System.out.println(currentLetter + " is in the word but placed in the wrong spot");
+                currentField.setBackground(backFillYellow);
+            }
+
+            else {
+                System.out.println(currentLetter + " is not in the word");
+            }
+
+        }
+        
+        else {
+            number.showAndWait();
+            return;
+        }
+        at++;
+    }
+    public void clearRow() {
+        int i;
+        for(i = 0; i < 5; i++) {
+            currentField = ((TextField)grid[idx].getChildren().get(i));
+            currentField.setText("");
+        }
     }
 }
