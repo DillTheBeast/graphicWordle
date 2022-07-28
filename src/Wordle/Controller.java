@@ -119,6 +119,7 @@ public class Controller {
                 currentLetter = currentField.getText();
                 if(isValidLetter(currentLetter)) {
                 inputWord += currentLetter;
+                setColors();
                 }
                 else {
                     invalidInput.showAndWait();
@@ -127,7 +128,6 @@ public class Controller {
                 
             }
             if(wordGenerator.isWord(inputWord)) {
-                setColors();
                 if(secretWord.equals(inputWord.toLowerCase())) {
                     youWon.showAndWait();
                     resetBoard();
@@ -146,7 +146,7 @@ public class Controller {
                 
             }
             else {
-                noWord.showAndWait();
+                noWord.show();
                 clearRow();
 
             }
@@ -175,15 +175,10 @@ public class Controller {
                 TextField currentSpot = (TextField)currentNode;
                 String curLetter = currentSpot.getText();
                 if(curLetter.toLowerCase().charAt(0) == secretWord.toLowerCase().charAt(spot)) {
-                    System.out.println(currentLetter + " is in the right spot");
                     currentField.setBackground(backFillGreen);
                 }
                 else if(secretWord.contains(curLetter)) {
-                    System.out.println(currentLetter + " is in the word but placed in the wrong spot");
                     currentField.setBackground(backFillYellow);  
-                }
-                else {
-                    System.out.println(currentLetter + " is not in the word");  
                 }
                 spot++;
             } catch (Exception e) {
