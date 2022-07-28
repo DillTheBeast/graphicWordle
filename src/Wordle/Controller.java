@@ -48,7 +48,7 @@ public class Controller {
     private Button enterButton;
 
     Alert multiLetters;
-    Alert number;
+    Alert invalidInput;
     Alert youWon;
     Alert youLose;
     Alert noWord;
@@ -86,9 +86,9 @@ public class Controller {
         multiLetters.setHeaderText("Invalid letter amount.");
         multiLetters.setContentText("There should be one letter in each box.");
 
-        number = new Alert(AlertType.ERROR);
-        number.setHeaderText("Invalid input");
-        number.setContentText("There should only be a letter in the box. No numbers or characters.");
+        invalidInput = new Alert(AlertType.ERROR);
+        invalidInput.setHeaderText("Invalid input");
+        invalidInput.setContentText("There should only be a letter in the box. No numbers or characters.");
 
         youWon = new Alert(AlertType.CONFIRMATION);
         youWon.setHeaderText("YOU WON");
@@ -117,16 +117,22 @@ public class Controller {
             for(int i = 0; i < 5; i++) {
                 currentField = ((TextField)grid[idx].getChildren().get(i));
                 currentLetter = currentField.getText();
+                if(isValidLetter(currentLetter)) {
                 inputWord += currentLetter;
+                }
+                else {
+                    invalidInput.showAndWait();
+                    return;
+                }
+                
             }
-            if(inputWord.equals(wordGenerator)) {
-                rightLetterCheck(currentLetter, currentField);
-                idx++;
+            if(wordGenerator.isWord(inputWord)) {
+                setColors();
                 if(secretWord.equals(inputWord.toLowerCase())) {
                     youWon.showAndWait();
                     resetBoard();
                 }
-    
+                
                 else if(idx == 6) {
                     youLose.showAndWait();
                     resetBoard();
@@ -134,16 +140,69 @@ public class Controller {
     
                 else {
                     grid[idx].setDisable(false);
+                    idx++;
                     grid[idx-1].setDisable(true);
                 }
+                
             }
             else {
                 noWord.showAndWait();
                 clearRow();
 
             }
-
+            
     } 
+
+    public boolean isValidLetter(String currentLetter) {
+        if(currentLetter.length() != 1) {
+            multiLetters.showAndWait();
+            return false;
+        }
+
+        else if((currentLetter.charAt(0) >= 65 && currentLetter.charAt(0) <= 90) || (currentLetter.charAt(0) >= 97 && currentLetter.charAt(0) <= 122)) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+        
+    }
+    public void setColors() {
+        int spot = 0;
+        for (Node currentNode : grid[idx].getChildren()) {
+            try {
+                TextField currentSpot = (TextField)currentNode;
+                String curLetter = currentSpot.getText();
+                if(curLetter.toLowerCase().charAt(0) == secretWord.toLowerCase().charAt(spot)) {
+                    System.out.println(currentLetter + " is in the right spot");
+                    currentField.setBackground(backFillGreen);
+                }
+                else if(secretWord.contains(curLetter)) {
+                    System.out.println(currentLetter + " is in the word but placed in the wrong spot");
+                    currentField.setBackground(backFillYellow);  
+                }
+                else {
+                    System.out.println(currentLetter + " is not in the word");  
+                }
+                spot++;
+            } catch (Exception e) {
+
+            }
+
+        }
+    }
+
+    public void clearRow() {
+        for (Node currentNode : grid[idx].getChildren()) {
+            try {
+                ((TextField)currentNode).setText("");
+            } catch (Exception e) {
+                
+            }
+            
+        }
+    }
 
     public void resetBoard() {
         secretWord = wordGenerator.getRandomWord();
@@ -162,42 +221,5 @@ public class Controller {
         grid[idx].setDisable(true);
         idx = 0;
         grid[idx].setDisable(false);
-    }
-    public void rightLetterCheck(String currentLetter, TextField currentField) {
-        int at = 0;
-        if(currentLetter.length() != 1) {
-            multiLetters.showAndWait();
-            return;
-        }
-        
-        if((currentLetter.charAt(0) >= 65 && currentLetter.charAt(0) <= 90) || (currentLetter.charAt(0) >= 97 && currentLetter.charAt(0) <= 122)) {
-            if(currentLetter.toLowerCase().charAt(0) == secretWord.toLowerCase().charAt(at)) {
-                System.out.println(currentLetter + " is in the right spot");
-                currentField.setBackground(backFillGreen);
-            }
-
-            else if(secretWord.contains(currentLetter)) {
-                System.out.println(currentLetter + " is in the word but placed in the wrong spot");
-                currentField.setBackground(backFillYellow);
-            }
-
-            else {
-                System.out.println(currentLetter + " is not in the word");
-            }
-
-        }
-        
-        else {
-            number.showAndWait();
-            return;
-        }
-        at++;
-    }
-    public void clearRow() {
-        int i;
-        for(i = 0; i < 5; i++) {
-            currentField = ((TextField)grid[idx].getChildren().get(i));
-            currentField.setText("");
-        }
     }
 }

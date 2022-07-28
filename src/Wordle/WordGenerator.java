@@ -70,7 +70,7 @@ public class WordGenerator {
             
             while(reader.hasNext()){
                 currentWord = reader.nextLine();
-                System.out.println("Checking: " + currentWord + "...");
+                //System.out.println("Checking: " + currentWord + "...");
                 if (currentWord.equals(word))
                     return true;
             }
