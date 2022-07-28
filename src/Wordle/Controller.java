@@ -117,6 +117,7 @@ public class Controller {
                 TextField currentField = ((TextField)grid[idx].getChildren().get(i));
                 String currentLetter = currentField.getText();
                 inputWord += currentLetter;
+                
 
                 if(currentLetter.length() != 1) {
                     multiLetters.showAndWait();
@@ -144,6 +145,9 @@ public class Controller {
                     number.showAndWait();
                     return;
                 }
+            }
+            if(inputWord.equals(wordGenerator)) {
+
             }
 
             idx++;
