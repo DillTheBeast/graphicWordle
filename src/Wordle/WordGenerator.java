@@ -26,7 +26,7 @@ public class WordGenerator {
      */
 
 
-    private final int WORD_FILE_SIZE = 15_900; //PLEASE CHANGE ME WHEN CHANGING THE FILE PATH VARIABLE
+    private final int WORD_FILE_SIZE = 5_000; //PLEASE CHANGE ME WHEN CHANGING THE FILE PATH VARIABLE
     public WordGenerator(){
        
        
@@ -38,7 +38,7 @@ public class WordGenerator {
             int count = 0;
             int randIdx = (int)(Math.random() * WORD_FILE_SIZE);
 
-            reader = new Scanner(new File(WORDS_BASE_PATH + ALL_WORDS_PATH)); //Update this to set difficulty. 
+            reader = new Scanner(new File(WORDS_BASE_PATH + SOME_WORDS_PATH)); //Update this to set difficulty. 
             String currentWord = "";
             
             while(reader.hasNext()){

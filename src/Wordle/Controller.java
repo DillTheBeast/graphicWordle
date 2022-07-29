@@ -58,8 +58,8 @@ public class Controller {
     Background backFillGrey;
     Background resetBackground;
     GridPane[] grid;
-    int idx = 0;
-    String inputWord = "";
+    int idx;
+    String inputWord;
     WordGenerator wordGenerator;
     String currentLetter;
     TextField currentField;
@@ -67,8 +67,6 @@ public class Controller {
     TextField curSpot;
 
     public void initialize() {
-        String javaVersion = System.getProperty("java.version");
-        String javafxVersion = System.getProperty("javafx.version");
         
         grid[0] = grid1;
         grid[1] = grid2;
@@ -80,6 +78,8 @@ public class Controller {
 
     public Controller() {
 
+        inputWord = "";
+        idx = 0;
         wordGenerator = new WordGenerator();
         secretWord = wordGenerator.getRandomWord();
         System.out.println(secretWord);
@@ -90,7 +90,7 @@ public class Controller {
 
         invalidInput = new Alert(AlertType.ERROR);
         invalidInput.setHeaderText("Invalid input");
-        invalidInput.setContentText("There should only be a letter in the box. No numbers or characters.");
+        invalidInput.setContentText("There should only be a letter in each box. No numbers or non-english characters.");
 
         youWon = new Alert(AlertType.CONFIRMATION);
         youWon.setHeaderText("YOU WON");
