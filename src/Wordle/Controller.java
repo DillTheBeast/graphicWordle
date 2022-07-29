@@ -63,6 +63,7 @@ public class Controller {
     WordGenerator wordGenerator;
     String currentLetter;
     TextField currentField;
+    TextField currentFieldOn;
     TextField curSpot;
 
     public void initialize() {
@@ -146,7 +147,7 @@ public class Controller {
                 else {
                     idx++;
                     grid[idx].setDisable(false);
-                    grid[idx-1].setDisable(true);
+                    grid[idx-1].setDisable(true);         
                 }
                 
             }
