@@ -63,6 +63,7 @@ public class Controller {
     WordGenerator wordGenerator;
     String currentLetter;
     TextField currentField;
+    TextField curSpot;
 
     public void initialize() {
         String javaVersion = System.getProperty("java.version");
@@ -80,7 +81,7 @@ public class Controller {
 
         wordGenerator = new WordGenerator();
         secretWord = wordGenerator.getRandomWord();
-        //System.out.println(secretWord);
+        System.out.println(secretWord);
 
         multiLetters = new Alert(AlertType.ERROR);
         multiLetters.setHeaderText("Invalid letter amount.");
@@ -112,14 +113,12 @@ public class Controller {
 
     @FXML
     void onEnterClick(ActionEvent event) {
-        int colorCounter = 0;
         inputWord = "";
 
             for(int i = 0; i < 5; i++) {
                 currentField = ((TextField)grid[idx].getChildren().get(i));
                 currentLetter = currentField.getText();
                 if(isValidLetter(currentLetter)) {
-                colorCounter++; 
                 inputWord += currentLetter;
                 }
                 else {
@@ -129,23 +128,23 @@ public class Controller {
                 }
                 
             }
-            if(colorCounter == 5) {
-                setColors();
-            }
             
-            idx++;
+            
             if(wordGenerator.isWord(inputWord)) {
+                setColors();
+                
                 if(secretWord.equals(inputWord.toLowerCase())) {
                     youWon.showAndWait();
                     resetBoard();
                 }
                 
-                else if(idx == 6) {
+                else if(idx == 5) {
                     youLose.showAndWait();
                     resetBoard();
                 }
     
                 else {
+                    idx++;
                     grid[idx].setDisable(false);
                     grid[idx-1].setDisable(true);
                 }
@@ -154,7 +153,6 @@ public class Controller {
             else {
                 noWord.show();
                 clearRow();
-
             }
             
             
@@ -199,14 +197,20 @@ public class Controller {
     }
 
     public void clearRow() {
-        for (Node currentNode : grid[idx].getChildren()) {
+        
+        for (int i = 0; i < 5; i++) {   
             try {
-                ((TextField)currentNode).setText("");
+                TextField curSpot = ((TextField)grid[idx].getChildren().get(i));
+                //String curLetter = curSpot.getText();
+                curSpot.setText("");
+                curSpot.setBackground(resetBackground);
             } catch (Exception e) {
                 
             }
             
+                
         }
+            
     }
 
     public void resetBoard() {
