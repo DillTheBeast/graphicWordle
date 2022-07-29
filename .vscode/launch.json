@@ -1,5 +1,14 @@
 {
-
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "Wordle.Main",
+            "projectName": "graphicWordle_a7d96944"
+        }
+    ],
+    
     "version": "0.2.0",
     "configurations": [
         {
@@ -8,9 +17,10 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Wordle.Main",
-            "vmArgs": "--module-path C:\\Users\\User\\Documents\\javafx-sdk-18.0.2\\lib --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path /Users/dillonmaltese/Downloads/javafx-sdk-18.0.2/lib --add-modules javafx.controls,javafx.fxml",
             
         }
     ]
+    
     
 }
