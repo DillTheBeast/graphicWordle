@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
+ .text-field{
+    -fx-font-size: 25;
+    -fx-font-family: 'Source Code Pro', monospace;
+ }
+ .label{
+    -fx-font-family: 'Source Code Pro', monospace;
+ }
