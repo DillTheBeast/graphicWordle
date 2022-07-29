@@ -112,21 +112,29 @@ public class Controller {
 
     @FXML
     void onEnterClick(ActionEvent event) {
+        int colorCounter = 0;
         inputWord = "";
 
             for(int i = 0; i < 5; i++) {
                 currentField = ((TextField)grid[idx].getChildren().get(i));
                 currentLetter = currentField.getText();
                 if(isValidLetter(currentLetter)) {
+                colorCounter++;
+                System.out.println("Hello");
                 inputWord += currentLetter;
-                setColors();
                 }
                 else {
-                    invalidInput.showAndWait();
+                   invalidInput.showAndWait();
                     return;
+                    
                 }
                 
             }
+            if(colorCounter == 5) {
+                setColors();
+            }
+            /*
+            idx++;
             if(wordGenerator.isWord(inputWord)) {
                 if(secretWord.equals(inputWord.toLowerCase())) {
                     youWon.showAndWait();
@@ -140,7 +148,6 @@ public class Controller {
     
                 else {
                     grid[idx].setDisable(false);
-                    idx++;
                     grid[idx-1].setDisable(true);
                 }
                 
@@ -150,6 +157,7 @@ public class Controller {
                 clearRow();
 
             }
+            */
             
     } 
 
@@ -169,18 +177,24 @@ public class Controller {
         
     }
     public void setColors() {
-        int spot = 0;
-        for (Node currentNode : grid[idx].getChildren()) {
+        for(int i = 0; i < 5; i++) {
             try {
-                TextField currentSpot = (TextField)currentNode;
+                TextField currentSpot = ((TextField)grid[idx].getChildren().get(i));
                 String curLetter = currentSpot.getText();
-                if(curLetter.toLowerCase().charAt(0) == secretWord.toLowerCase().charAt(spot)) {
-                    currentField.setBackground(backFillGreen);
+                if(curLetter.charAt(0) == secretWord.charAt(i)) {
+                    currentSpot.setBackground(backFillGreen);
+                    System.out.println("Test");
                 }
+                
                 else if(secretWord.contains(curLetter)) {
-                    currentField.setBackground(backFillYellow);  
+                    currentSpot.setBackground(backFillYellow);  
+                    System.out.println("Test2");
                 }
-                spot++;
+                
+                else {
+                    System.out.println("Test3");
+                }
+
             } catch (Exception e) {
 
             }
