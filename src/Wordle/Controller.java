@@ -80,7 +80,7 @@ public class Controller {
 
         wordGenerator = new WordGenerator();
         secretWord = wordGenerator.getRandomWord();
-        System.out.println(secretWord);
+        //System.out.println(secretWord);
 
         multiLetters = new Alert(AlertType.ERROR);
         multiLetters.setHeaderText("Invalid letter amount.");
@@ -119,8 +119,7 @@ public class Controller {
                 currentField = ((TextField)grid[idx].getChildren().get(i));
                 currentLetter = currentField.getText();
                 if(isValidLetter(currentLetter)) {
-                colorCounter++;
-                System.out.println("Hello");
+                colorCounter++; 
                 inputWord += currentLetter;
                 }
                 else {
@@ -133,7 +132,7 @@ public class Controller {
             if(colorCounter == 5) {
                 setColors();
             }
-            /*
+            
             idx++;
             if(wordGenerator.isWord(inputWord)) {
                 if(secretWord.equals(inputWord.toLowerCase())) {
@@ -157,7 +156,7 @@ public class Controller {
                 clearRow();
 
             }
-            */
+            
             
     } 
 
@@ -183,16 +182,13 @@ public class Controller {
                 String curLetter = currentSpot.getText();
                 if(curLetter.charAt(0) == secretWord.charAt(i)) {
                     currentSpot.setBackground(backFillGreen);
-                    System.out.println("Test");
                 }
                 
                 else if(secretWord.contains(curLetter)) {
                     currentSpot.setBackground(backFillYellow);  
-                    System.out.println("Test2");
                 }
                 
                 else {
-                    System.out.println("Test3");
                 }
 
             } catch (Exception e) {
