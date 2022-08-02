@@ -231,5 +231,6 @@ public class Controller {
         grid[idx].setDisable(true);
         idx = 0;
         grid[idx].setDisable(false);
+        youLose.setContentText("You lost. The word was " + secretWord);
     }
 }
