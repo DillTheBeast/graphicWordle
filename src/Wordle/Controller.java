@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -28,21 +29,77 @@ public class Controller {
 
     @FXML
     private GridPane grid1;
-
     @FXML
     private GridPane grid2;
-
     @FXML
     private GridPane grid3;
-
     @FXML
     private GridPane grid4;
-
     @FXML
     private GridPane grid5;
-
     @FXML
     private GridPane grid6;
+
+    @FXML
+    private TextField field1;
+    @FXML
+    private TextField field2;
+    @FXML
+    private TextField field3;
+    @FXML
+    private TextField field4;
+    @FXML
+    private TextField field5;
+    @FXML
+    private TextField field11;
+    @FXML
+    private TextField field12;
+    @FXML
+    private TextField field13;
+    @FXML
+    private TextField field14;
+    @FXML
+    private TextField field15;
+    @FXML
+    private TextField field21;
+    @FXML
+    private TextField field22;
+    @FXML
+    private TextField field23;
+    @FXML
+    private TextField field24;
+    @FXML
+    private TextField field25;
+    @FXML
+    private TextField field31;
+    @FXML
+    private TextField field32;
+    @FXML
+    private TextField field33;
+    @FXML
+    private TextField field34;
+    @FXML
+    private TextField field35;
+    @FXML
+    private TextField field41;
+    @FXML
+    private TextField field42;
+    @FXML
+    private TextField field43;
+    @FXML
+    private TextField field44;
+    @FXML
+    private TextField field45;
+    @FXML
+    private TextField field51;
+    @FXML
+    private TextField field52;
+    @FXML
+    private TextField field53;
+    @FXML
+    private TextField field54;
+    @FXML
+    private TextField field55;
 
     @FXML
     private Button enterButton;
@@ -73,7 +130,9 @@ public class Controller {
         grid[2] = grid3;
         grid[3] = grid4;
         grid[4] = grid5;
-        grid[5] = grid6;  
+        grid[5] = grid6;
+        
+        field1.requestFocus();
     }
 
     public Controller() {
@@ -110,6 +169,11 @@ public class Controller {
         resetBackground = new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY));
 
         grid = new GridPane[6]; 
+    }
+
+    @FXML
+    void letterTyped(KeyEvent event) {
+        field2.requestFocus(); 
     }
 
     @FXML

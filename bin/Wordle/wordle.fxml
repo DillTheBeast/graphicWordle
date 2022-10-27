@@ -23,27 +23,27 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0">
+            <TextField fx:id="field1" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="1">
+            <TextField fx:id="field2" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="1">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="2">
+            <TextField fx:id="field3" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="2">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="3">
+            <TextField fx:id="field4" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="3">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="4">
+            <TextField fx:id="field5" alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="4">
                <font>
                   <Font size="25.0" />
                </font>
@@ -62,27 +62,27 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0">
+            <TextField fx:id="field11" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="1">
+            <TextField fx:id="field12" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="1">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="2">
+            <TextField fx:id="field13" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="2">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="3">
+            <TextField fx:id="field14" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="3">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="4">
+            <TextField fx:id="field15" alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="4">
                <font>
                   <Font size="25.0" />
                </font>
@@ -101,27 +101,27 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0">
+            <TextField fx:id="field21" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="1">
+            <TextField fx:id="field22" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="1">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="2">
+            <TextField fx:id="field23" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="2">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="3">
+            <TextField fx:id="field24" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="3">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="4">
+            <TextField fx:id="field25" alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="4">
                <font>
                   <Font size="25.0" />
                </font>
@@ -140,27 +140,27 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0">
+            <TextField fx:id="field31" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="1">
+            <TextField fx:id="field32" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="1">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="2">
+            <TextField fx:id="field33" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="2">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="3">
+            <TextField fx:id="field34" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="3">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="4">
+            <TextField fx:id="field35" alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="4">
                <font>
                   <Font size="25.0" />
                </font>
@@ -179,27 +179,27 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0">
+            <TextField fx:id="field41" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="1">
+            <TextField fx:id="field42" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="1">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="2">
+            <TextField fx:id="field43" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="2">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="3">
+            <TextField fx:id="field44" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="3">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="4">
+            <TextField fx:id="field45" alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="4">
                <font>
                   <Font size="25.0" />
                </font>
@@ -218,27 +218,27 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0">
+            <TextField fx:id="field51" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="1">
+            <TextField fx:id="field52" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="1">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="2">
+            <TextField fx:id="field53" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="2">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="3">
+            <TextField fx:id="field54" alignment="CENTER" onKeyReleased="#letterTyped" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="3">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="4">
+            <TextField fx:id="field55" alignment="CENTER" prefHeight="82.0" prefWidth="100.0" GridPane.columnIndex="4">
                <font>
                   <Font size="25.0" />
                </font>
