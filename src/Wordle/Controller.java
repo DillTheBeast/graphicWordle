@@ -135,7 +135,7 @@ public class Controller {
     TextField curSpot;
 
     public void initialize() {
-        
+        //Setting all of the arrays to what they need to be set to
         grid[0] = grid1;
         grid[1] = grid2;
         grid[2] = grid3;
@@ -191,26 +191,34 @@ public class Controller {
         secretWord = wordGenerator.getRandomWord();
         System.out.println(secretWord);
 
+        //Declaring all of the alerts
+
+        //Incase there are 2 letters in one box
         multiLetters = new Alert(AlertType.ERROR);
         multiLetters.setHeaderText("Invalid letter amount.");
         multiLetters.setContentText("There should be one letter in each box.");
 
+        //Incase there is a character that is not a letter in one of the boxes 
         invalidInput = new Alert(AlertType.ERROR);
         invalidInput.setHeaderText("Invalid input");
         invalidInput.setContentText("There should only be a letter in each box. No numbers or non-english characters.");
 
+        //If the player won
         youWon = new Alert(AlertType.CONFIRMATION);
         youWon.setHeaderText("YOU WON");
         youWon.setContentText("You have guessed the word.");
          
+        //If the player lost
         youLose = new Alert(AlertType.CONFIRMATION);
         youLose.setHeaderText("YOU LOST");
         youLose.setContentText("You have lost. The word was " + secretWord);
 
+        //If the word is not real
         noWord = new Alert(AlertType.ERROR);
         noWord.setHeaderText("Not and a real word");
         noWord.setContentText("This is not a word in the english dictionary");
 
+        //Declaring all of the backgrounds to see if the letter is correct or not
         backFillGreen = new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY));
         backFillYellow = new Background(new BackgroundFill(Color.YELLOW, CornerRadii.EMPTY, Insets.EMPTY));
         backFillGrey = new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY));
@@ -225,6 +233,7 @@ public class Controller {
         sixthfield = new TextField[5];
     }
 
+    //Once you click a key this will run
     @FXML
     void letterTyped(KeyEvent event) {
         if(event.getCode() == KeyCode.BACK_SPACE) {
@@ -329,74 +338,89 @@ public class Controller {
         }
     }
 
+    //Once the enter button is clicked this will run
     @FXML
     void onEnterClick(ActionEvent event) {
         inputWord = "";
 
-            for(int i = 0; i < 5; i++) {
-                currentField = ((TextField)grid[idx].getChildren().get(i));
-                currentLetter = currentField.getText();
-                if(isValidLetter(currentLetter)) {
-                inputWord += currentLetter;
-                }
-                else {
-                   invalidInput.showAndWait();
-                    return;
-                    
-                }
-                
-            }
-            
-            
-            if(wordGenerator.isWord(inputWord)) {
-                setColors();
-                
-                if(secretWord.equals(inputWord.toLowerCase())) {
-                    youWon.showAndWait();
-                    f = 0;
-                    y = 0;
-                    resetBoard();
-                }
-                
-                else if(idx == 5) {
-                    youLose.showAndWait();
-                    f = 0;
-                    y = 0;
-                    resetBoard();
-                }
-    
-                else {
-                    idx++;
-                    grid[idx].setDisable(false);
-                    grid[idx-1].setDisable(true);         
-                }
-                
+        //Making sure that all the letters are correct by running the valid letter checker method
+        for(int i = 0; i < 5; i++) {
+            currentField = ((TextField)grid[idx].getChildren().get(i));
+            currentLetter = currentField.getText();
+            if(isValidLetter(currentLetter)) {
+            inputWord += currentLetter;
             }
             else {
-                noWord.show();
-                clearRow();
-                f = 0;
+                invalidInput.showAndWait();
+                return;
+                
             }
+            
+        }
+        
+        //Making sure that the word is a real world by checking the file full of all of the 5 letter words
+        //If the word is ok then it will run the color fill method
+        if(wordGenerator.isWord(inputWord)) {
+            setColors();
+            
+            //If the secret word is guessed, then it resets the variables, the board, and the you won message pops up
+            if(secretWord.equals(inputWord.toLowerCase())) {
+                youWon.showAndWait();
+                f = 0;
+                y = 0;
+                resetBoard();
+            }
+            
+            //If the secret word is not guessed, and all of the lines are full, then reset the variables, the board, and the you lose message pops up 
+            else if(idx == 5) {
+                youLose.showAndWait();
+                f = 0;
+                y = 0;
+                resetBoard();
+            }
+
+            //If none of that is true, then go to the next grid 
+            else {
+                idx++;
+                grid[idx].setDisable(false);
+                grid[idx-1].setDisable(true);         
+            }
+            
+        }
+        else {
+            noWord.show();
+            clearRow();
+            f = 0;
+        }
             
             
     } 
 
+    //Checks to make sure that the input is all letters
     public boolean isValidLetter(String currentLetter) {
+        
+        //Making sure that each box has only 1 letter and if it doesn't then there will be an error
         if(currentLetter.length() != 1) {
             multiLetters.showAndWait();
             return false;
         }
 
+        //Making sure that each input is a letter
         else if((currentLetter.charAt(0) >= 65 && currentLetter.charAt(0) <= 90) || (currentLetter.charAt(0) >= 97 && currentLetter.charAt(0) <= 122)) {
             return true;
         }
 
+        //If it is not a letter, then the method will return false
         else {
             return false;
         }
         
     }
+
+    //Sets the backgrounds to the letters that are correct
     public void setColors() {
+
+        //Goes through each box of the row, setting all of the boxes to whatever color they are 1 by 1
         for(int i = 0; i < 5; i++) {
             try {
                 TextField currentSpot = ((TextField)grid[idx].getChildren().get(i));
@@ -419,8 +443,10 @@ public class Controller {
         }
     }
 
+    //Clears the row after you make an invalid word
     public void clearRow() {
         
+        //Goes through the whole row, clearing each box 1 by 1
         for (int i = 0; i < 5; i++) {   
             try {
                 TextField curSpot = ((TextField)grid[idx].getChildren().get(i));
@@ -430,15 +456,20 @@ public class Controller {
             } catch (Exception e) {
                 
             }
-            
+            f = 0;
                 
         }
             
     }
 
+    //Clears the board after you reset the game
     public void resetBoard() {
+
+        //Generates a random word
         secretWord = wordGenerator.getRandomWord();
         System.out.println(secretWord);
+
+        //Goes through all of the grids and gridpanes, clearing each of the boxes background and setting the box to empty one by one
         for (GridPane gridPane : grid) {
             for (Node currentNode: gridPane.getChildren()) {
                 try {
@@ -450,8 +481,12 @@ public class Controller {
                 
             }
         }
+
+        //Reseting everything
         grid[idx].setDisable(true);
         idx = 0;
+        f = 0;
+        y = 0;
         grid[idx].setDisable(false);
         youLose.setContentText("You lost. The word was " + secretWord);
     }
