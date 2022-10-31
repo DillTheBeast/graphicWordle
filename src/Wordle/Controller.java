@@ -1,5 +1,6 @@
 package Wordle;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.swing.plaf.multi.MultiMenuBarUI;
@@ -14,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -21,6 +23,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public class Controller {
 
@@ -115,7 +118,15 @@ public class Controller {
     Background backFillGrey;
     Background resetBackground;
     GridPane[] grid;
+    TextField[] firstfield;
+    TextField[] secondfield;
+    TextField[] thirdfield;
+    TextField[] fourthfield;
+    TextField[] fifthfield;
+    TextField[] sixthfield;
     int idx;
+    int f;
+    int y;
     String inputWord;
     WordGenerator wordGenerator;
     String currentLetter;
@@ -131,6 +142,41 @@ public class Controller {
         grid[3] = grid4;
         grid[4] = grid5;
         grid[5] = grid6;
+
+        firstfield[0] = field2;
+        firstfield[1] = field3;
+        firstfield[2] = field4;
+        firstfield[3] = field5;
+
+        secondfield[0] = field11;
+        secondfield[1] = field12;
+        secondfield[2] = field13;
+        secondfield[3] = field14;
+        secondfield[4] = field15;
+
+        thirdfield[0] = field21;
+        thirdfield[1] = field22;
+        thirdfield[2] = field23;
+        thirdfield[3] = field24;
+        thirdfield[4] = field25;
+
+        fourthfield[0] = field31;
+        fourthfield[1] = field32;
+        fourthfield[2] = field33;
+        fourthfield[3] = field34;
+        fourthfield[4] = field35;
+
+        fifthfield[0] = field41;
+        fifthfield[1] = field42;
+        fifthfield[2] = field43;
+        fifthfield[3] = field44;
+        fifthfield[4] = field45;
+
+        sixthfield[0] = field51;
+        sixthfield[1] = field52;
+        sixthfield[2] = field53;
+        sixthfield[3] = field54;
+        sixthfield[4] = field55;
         
         field1.requestFocus();
     }
@@ -139,6 +185,8 @@ public class Controller {
 
         inputWord = "";
         idx = 0;
+        f = 0;
+        y = 1;
         wordGenerator = new WordGenerator();
         secretWord = wordGenerator.getRandomWord();
         System.out.println(secretWord);
@@ -168,12 +216,117 @@ public class Controller {
         backFillGrey = new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY));
         resetBackground = new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY));
 
-        grid = new GridPane[6]; 
+        grid = new GridPane[6];
+        firstfield = new TextField[4]; 
+        secondfield = new TextField[5];
+        thirdfield = new TextField[5];
+        fourthfield = new TextField[5];
+        fifthfield = new TextField[5];
+        sixthfield = new TextField[5];
     }
 
     @FXML
     void letterTyped(KeyEvent event) {
-        field2.requestFocus(); 
+        if(event.getCode() == KeyCode.BACK_SPACE) {
+            System.out.println("Test");
+            if(y == 1) {
+                if(firstfield[f].contains(null)) {
+                    f--;
+                    firstfield[f].requestFocus();
+                }
+            }
+            else if(y == 2) {
+                if(secondfield[f].contains(null)) {
+                    f--;
+                    secondfield[f].requestFocus();
+                }
+            }
+            else if(y == 3) {
+                if(thirdfield[f].contains(null)) {
+                    f--;
+                    thirdfield[f].requestFocus();
+                }
+            }
+            else if(y == 4) {
+                if(fourthfield[f].contains(null)) {
+                    f--;
+                    fourthfield[f].requestFocus();
+                }
+            }
+            else if(y == 5) {
+                if(fifthfield[f].contains(null)) {
+                    f--;
+                    fifthfield[f].requestFocus();
+                }
+            }
+            else if(y == 6) {
+                if(sixthfield[f].contains(null)) {
+                    f--;
+                    sixthfield[f].requestFocus();
+                }
+            }
+
+        }
+        else if(y == 1) {
+            if(f == 4) {
+            y++;
+            f = 0;
+            }
+            else {
+                firstfield[f].requestFocus();
+                f++;
+            }
+        }
+        else if(y == 2) {
+            if(f == 5) {
+                y++;
+                f = 0;
+            }
+            else {
+                secondfield[f].requestFocus();
+                f++;
+            }
+        }
+        else if(y == 3) {
+            if(f == 5) {
+                y++;
+                f = 0;
+            }
+            else {
+                thirdfield[f].requestFocus();
+                f++;
+            }
+        }
+        else if(y == 4) {
+            if(f == 5) {
+                y++;
+                f = 0;
+            }
+            else {
+                fourthfield[f].requestFocus();
+                f++;
+            }
+        }
+        else if(y == 5) {
+            if(f == 5) {
+                y++;
+                f = 0;
+            }
+            else {
+                fifthfield[f].requestFocus();
+                f++;
+            }
+        }
+        else if(y == 6) {
+            if(f == 5) {
+                y++;
+                f = 0;
+            }
+            else {
+                sixthfield[f].requestFocus();
+                f++;
+            }
+        }
     }
 
     @FXML
@@ -200,11 +353,15 @@ public class Controller {
                 
                 if(secretWord.equals(inputWord.toLowerCase())) {
                     youWon.showAndWait();
+                    f = 0;
+                    y = 0;
                     resetBoard();
                 }
                 
                 else if(idx == 5) {
                     youLose.showAndWait();
+                    f = 0;
+                    y = 0;
                     resetBoard();
                 }
     
@@ -218,6 +375,7 @@ public class Controller {
             else {
                 noWord.show();
                 clearRow();
+                f = 0;
             }
             
             
