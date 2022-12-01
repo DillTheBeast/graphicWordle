@@ -42,6 +42,8 @@ public class Controller {
     private GridPane grid5;
     @FXML
     private GridPane grid6;
+    @FXML
+    private GridPane lettersGrid;
 
     @FXML
     private TextField field1;
@@ -106,6 +108,57 @@ public class Controller {
 
     @FXML
     private Button enterButton;
+
+    @FXML
+    private Text aText;
+    @FXML
+    private Text bText;
+    @FXML
+    private Text cText;
+    @FXML
+    private Text eText;
+    @FXML
+    private Text fText;
+    @FXML
+    private Text gText;
+    @FXML
+    private Text hText;
+    @FXML
+    private Text iText;
+    @FXML
+    private Text jText;
+    @FXML
+    private Text kText;
+    @FXML
+    private Text lText;
+    @FXML
+    private Text mText;
+    @FXML
+    private Text nText;
+    @FXML
+    private Text oText;
+    @FXML
+    private Text pText;
+    @FXML
+    private Text qText;
+    @FXML
+    private Text rText;
+    @FXML
+    private Text sText;
+    @FXML
+    private Text tText;
+    @FXML
+    private Text uText;
+    @FXML
+    private Text vText;
+    @FXML
+    private Text wText;
+    @FXML
+    private Text xText;
+    @FXML
+    private Text yText;
+    @FXML
+    private Text zText;
 
     Alert multiLetters;
     Alert invalidInput;

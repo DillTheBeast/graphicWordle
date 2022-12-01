@@ -14,7 +14,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("wordle.fxml"));
         primaryStage.setTitle("Wordle");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("wordleicon.png")));
-        Scene scene = new Scene(root, 600, 750);
+        Scene scene = new Scene(root, 800, 750);
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
