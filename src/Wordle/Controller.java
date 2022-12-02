@@ -116,6 +116,8 @@ public class Controller {
     @FXML
     private Text cText;
     @FXML
+    private Text dText;
+    @FXML
     private Text eText;
     @FXML
     private Text fText;
