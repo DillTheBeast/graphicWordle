@@ -292,7 +292,6 @@ public class Controller {
     @FXML
     void letterTyped(KeyEvent event) {
         if(event.getCode() == KeyCode.BACK_SPACE) {
-            System.out.println("Test");
             if(y == 1) {
                 if(firstfield[f].contains(null)) {
                     f--;
